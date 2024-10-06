@@ -8,7 +8,7 @@ public class GermanTranslator implements Translator {
 
 	static ArrayList<String> list = new ArrayList<>();
 	static { //Verwendung des static keyword mit einem Block, da Felder-Initialisierungen
-		     // nur innerhalb eines Blocks möglich sind
+		     // nur innerhalb eines Blocks möglich sind.
 		list.add("eins");
 		list.add("zwei");
 		list.add("drei");
