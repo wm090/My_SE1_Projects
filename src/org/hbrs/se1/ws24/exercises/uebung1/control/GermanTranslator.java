@@ -7,7 +7,8 @@ public class GermanTranslator implements Translator {
 	public String date = "Okt/2024"; // Default-Wert
 
 	static ArrayList<String> list = new ArrayList<>();
-	static {
+	static { //Verwendung des static keyboard mit einem Block, da Felder-Initialisierungen
+		     // nur innerhalb eines Blocks möglich sind.
 		list.add("eins");
 		list.add("zwei");
 		list.add("drei");
@@ -18,8 +19,8 @@ public class GermanTranslator implements Translator {
 		list.add("acht");
 		list.add("neun");
 		list.add("zehn");
-	}
 
+	}
 	/**
 	 * Methode zur Übersetzung einer Zahl in eine String-Repraesentation
 	 */
