@@ -8,7 +8,7 @@ public class Client {
 	public static void main(String[] args) {
 		Client client = new Client();
 		client.display(10);  // Test mit einer gültigen Zahl
-		client.display(12); // Test mit einer ungültigen Zahl
+		client.display(13); // Test mit einer ungültigen Zahl
 	}
 	/**
 	 * Methode zur Ausgabe einer Zahl auf der Console
