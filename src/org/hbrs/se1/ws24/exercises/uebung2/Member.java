@@ -1,4 +1,5 @@
 package org.hbrs.se1.ws24.exercises.uebung2;
+
 public interface Member {
 
     /**
@@ -6,6 +7,6 @@ public interface Member {
      * zu setzen. Die ID darf nicht innerhalb des Container-Objekts gesetzt werden.
      * Die ID dient als Primärschlüssel zur Unterscheidung aller Member-Objekte.
      */
-    
+
     public Integer getID();
 }
