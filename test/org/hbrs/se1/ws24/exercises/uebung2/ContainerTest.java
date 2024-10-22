@@ -88,10 +88,10 @@ class ContainerTest {
         c.getCurrentList();
         assertEquals(0, c.size());
 
-        System.out.println("vorher dem Laden");
+        System.out.println("Vor dem Laden");
         c.dump();
         c.load();
-        System.out.println("Nachher dem Laden");
+        System.out.println("Nach dem Laden");
         assertEquals(2, c.size());
         c.dump();
 
