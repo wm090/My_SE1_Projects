@@ -1,9 +1,6 @@
 package org.hbrs.se1.ws24.exercises.uebung2;
 
-import org.hbrs.se1.ws24.exercises.uebung3.persistence.PersistenceException;
-import org.hbrs.se1.ws24.exercises.uebung3.persistence.PersistenceStrategy;
-import org.hbrs.se1.ws24.exercises.uebung3.persistence.PersistenceStrategyMongoDB;
-import org.hbrs.se1.ws24.exercises.uebung3.persistence.PersistenceStrategyStream;
+import org.hbrs.se1.ws24.exercises.uebung3.persistence.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -91,8 +88,12 @@ class ContainerTest {
         c.getCurrentList();
         assertEquals(0, c.size());
 
+        System.out.println("vorher dem Laden");
+        c.dump();
         c.load();
+        System.out.println("Nachher dem Laden");
         assertEquals(2, c.size());
+        c.dump();
 
     }
 
