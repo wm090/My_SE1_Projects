@@ -1,6 +1,6 @@
 package org.hbrs.se1.ws24.exercises.uebung3.persistence;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+
+import java.io.*;
 import java.util.List;
 
 public class PersistenceStrategyStream<E> implements PersistenceStrategy<E> {
@@ -21,8 +21,17 @@ public class PersistenceStrategyStream<E> implements PersistenceStrategy<E> {
      * https://www.digitalocean.com/community/tutorials/objectoutputstream-java-write-object-file
      * (Last Access: Oct, 15th 2024)
      */
-    public void save(List<E> member) throws PersistenceException  {
+    public void save(List<E> memberList) throws PersistenceException {
+        System.out.println("Versuche, Daten zu speichern..."); // Debug-Ausgabe
 
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(location))) {
+            oos.writeObject(memberList); // Liste in Datei schreiben
+            System.out.println("Speichern erfolgreich!"); // Debug-Ausgabe
+        } catch (IOException e) {
+            System.err.println("Fehler beim Speichern: " + e.getMessage()); // Ausgabe des Fehlers
+            throw new PersistenceException(PersistenceException.ExceptionType.ConnectionNotAvailable,
+                    "Fehler beim Speichern aufgetreten: " + e.getMessage());
+        }
     }
 
     @Override
@@ -31,8 +40,26 @@ public class PersistenceStrategyStream<E> implements PersistenceStrategy<E> {
      * Some coding examples come for free :-)
      * Take also a look at the import statements above ;-!
      */
-    public List<E> load() throws PersistenceException  {
+    public List<E> load() throws PersistenceException {
+        System.out.println("Versuche, Daten zu laden..."); // Debug-Ausgabe
+
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(location))) {
+            List<E> loadedList = (List<E>) ois.readObject(); // Liste aus Datei laden
+            System.out.println("Laden erfolgreich!"); // Debug-Ausgabe
+            return loadedList;
+        } catch (IOException e) {
+            System.err.println("Fehler beim Laden: " + e.getMessage()); // Ausgabe des Fehlers
+            throw new PersistenceException(PersistenceException.ExceptionType.ConnectionNotAvailable,
+                    "Fehler beim Laden aufgetreten: " + e.getMessage());
+        }
+        catch (ClassNotFoundException e){
+            System.err.println("Fehler beim Laden: " + e.getMessage()); // Ausgabe des Fehlers
+            throw new PersistenceException(PersistenceException.ExceptionType.ConnectionNotAvailable,
+                    "Fehler beim Laden aufgetreten: " + e.getMessage());
+        }
+    }
         // Some Coding hints ;-)
+
 
         // ObjectInputStream ois = null;
         // FileInputStream fis = null;
@@ -52,6 +79,6 @@ public class PersistenceStrategyStream<E> implements PersistenceStrategy<E> {
         // return newListe
 
         // and finally close the streams
-        return null;
+
     }
-}
+
