@@ -42,6 +42,7 @@ public class Container {
         persistenceStrategy.save(memberContainer);
     }
 
+
     public void load() throws PersistenceException {
         if (persistenceStrategy == null){
             throw new PersistenceException(PersistenceException.ExceptionType.NoStrategyIsSet, "No Strategy Set");
