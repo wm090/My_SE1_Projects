@@ -35,6 +35,7 @@ public class Container {
     public void setPersistenceStrategy(PersistenceStrategy<Member> strategy) {
         persistenceStrategy = strategy;
     }
+
     public void store() throws PersistenceException {
         if (persistenceStrategy == null){
             throw new PersistenceException(PersistenceException.ExceptionType.NoStrategyIsSet, "No Strategy Set");
