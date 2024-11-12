@@ -6,7 +6,7 @@ import java.util.List;
 public class PersistenceStrategyStream<E> implements PersistenceStrategy<E> {
 
     // URL of file, in which the objects are stored
-    private String location = "userStories.ser";
+    private String location = "allStories.ser";
 
     // Backdoor method used only for testing purposes, if the location should be changed in a Unit-Test
     // Example: Location is a directory (Streams do not like directories, so try this out ;-)!
